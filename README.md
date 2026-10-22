@@ -1,6 +1,6 @@
 # COMP1818 
 
-### current working topic idea: RL generalisation across map sizes using MiniGrid and PPO/DQN/A2C
+### current working topic idea: Investigating the impact of map-size diversity and Prioritized Level Replay on PPO and DQN generalisation in MiniGrid environments.
 
 
 

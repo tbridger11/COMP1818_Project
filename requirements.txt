@@ -1,0 +1,10 @@
+stable-baselines3==2.9.2
+minigrid==3.2.0
+gymnasium==1.4.0
+optuna==5.0.0
+numpy==2.5.4
+pandas==3.1.0
+matplotlib==3.11.2
+seaborn==0.13.2
+tensorboard==2.21.0
+torch==2.15.0

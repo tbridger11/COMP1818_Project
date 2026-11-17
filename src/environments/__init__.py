@@ -1,0 +1,1 @@
+"""Custom MiniGrid environments."""

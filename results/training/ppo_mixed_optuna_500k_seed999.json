@@ -1,0 +1,50 @@
+{
+    "algorithm": "PPO_MIXED_OPTUNA",
+    "environment": "MixedSizeEnv",
+    "training_sizes": [
+        5,
+        10,
+        15,
+        20
+    ],
+    "selection_method": "random_uniform",
+    "seed": 999,
+    "timesteps": 500000,
+    "policy": "MlpPolicy",
+    "hyperparameters": {
+        "learning_rate": 3.8857991779259546e-05,
+        "n_steps": 2048,
+        "batch_size": 32,
+        "ent_coef": 0.008834149776727012,
+        "clip_range": 0.19125610718247976
+    },
+    "wrappers": [
+        "FlatObsWrapper",
+        "Monitor"
+    ],
+    "model_name": "ppo_mixed_optuna_500k_seed999",
+    "model_path": "saved models/mixed_optuna/ppo_mixed_optuna_500k_seed999.zip",
+    "metadata_path": "results/training/ppo_mixed_optuna_500k_seed999.json",
+    "tensorboard_run": "ppo_mixed_optuna_500k_seed999_1",
+    "tensorboard_log_dir": "logs/tensorboard/ppo_mixed_optuna_500k_seed999_1",
+    "save_folder": "mixed_optuna",
+    "training_time_seconds": 2623.752078771591,
+    "selection_distribution_expected": {
+        "5": 0.25,
+        "10": 0.25,
+        "15": 0.25,
+        "20": 0.25
+    },
+    "selection_distribution_actual": {
+        "5": 0.2555685814771395,
+        "10": 0.24998604365544577,
+        "15": 0.25037682130296435,
+        "20": 0.2440685535644504
+    },
+    "size_counts": {
+        "5": 4578,
+        "10": 4478,
+        "15": 4485,
+        "20": 4372
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "algorithm": "PPO",
+    "environment": "VariableSizeEmptyEnv",
+    "map_size": 15,
+    "timesteps": 500000,
+    "model_name": "ppo_15x15_baseline_500k_seed123",
+    "model_path": "saved models/baseline/ppo_15x15_baseline_500k_seed123.zip",
+    "metadata_path": "results/training/ppo_15x15_baseline_500k_seed123.json",
+    "save_folder": "baseline",
+    "seed": 123,
+    "tensorboard_run": "ppo_15x15_baseline_500k_seed123_1",
+    "tensorboard_log_dir": "logs/tensorboard/ppo_15x15_baseline_500k_seed123_1",
+    "policy": "MlpPolicy",
+    "wrapper": "FlatObsWrapper",
+    "training_time_seconds": 1829.8302035331726
+}

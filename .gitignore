@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+!.env.example
+/logs/
+/plots_all_models/
+/tables_all_models/
+/saved models/test/
+/results/training/ppo_5x5_test_*.json

@@ -1,0 +1,13 @@
+{
+    "algorithm": "PPO",
+    "environment": "VariableSizeEmptyEnv",
+    "map_size": 20,
+    "timesteps": 250000,
+    "model_name": "ppo_20x20_baseline_250k_seed123",
+    "save_folder": "baseline",
+    "seed": 123,
+    "tensorboard_run": "ppo_20x20_baseline_250k_seed123",
+    "policy": "MlpPolicy",
+    "wrapper": "FlatObsWrapper",
+    "training_time_seconds": 902.2275211811066
+}

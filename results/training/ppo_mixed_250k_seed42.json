@@ -1,0 +1,39 @@
+{
+    "algorithm": "PPO_MIXED",
+    "environment": "MixedSizeEnv",
+    "training_sizes": [
+        5,
+        10,
+        15,
+        20
+    ],
+    "selection_method": "random_uniform",
+    "seed": 42,
+    "timesteps": 250000,
+    "policy": "MlpPolicy",
+    "wrappers": [
+        "FlatObsWrapper",
+        "Monitor"
+    ],
+    "model_name": "ppo_mixed_250k_seed42",
+    "save_folder": "mixed",
+    "training_time_seconds": 847.3170380592346,
+    "selection_distribution_expected": {
+        "5": 0.25,
+        "10": 0.25,
+        "15": 0.25,
+        "20": 0.25
+    },
+    "selection_distribution_actual": {
+        "5": 0.24417520969245107,
+        "10": 0.24767008387698042,
+        "15": 0.2523299161230196,
+        "20": 0.25582479030754895
+    },
+    "size_counts": {
+        "5": 1048,
+        "10": 1063,
+        "15": 1083,
+        "20": 1098
+    }
+}

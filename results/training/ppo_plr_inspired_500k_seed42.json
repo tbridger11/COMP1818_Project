@@ -1,0 +1,68 @@
+{
+    "algorithm": "PPO_PLR_INSPIRED",
+    "environment": "PLREnv",
+    "curriculum_description": "Select each training size uniformly 20% of the time; otherwise sample using its current priority.",
+    "training_sizes": [
+        5,
+        10,
+        15,
+        20
+    ],
+    "selection_method": "adaptive_priority",
+    "uniform_sampling_probability": 0.2,
+    "success_priority_multiplier": 0.95,
+    "failure_priority_multiplier": 1.05,
+    "minimum_priority": 0.1,
+    "maximum_priority": 10.0,
+    "seed": 42,
+    "timesteps": 500000,
+    "policy": "MlpPolicy",
+    "hyperparameters": {
+        "learning_rate": 3.8857991779259546e-05,
+        "n_steps": 2048,
+        "batch_size": 32,
+        "ent_coef": 0.008834149776727012,
+        "clip_range": 0.19125610718247976
+    },
+    "wrappers": [
+        "FlatObsWrapper",
+        "Monitor"
+    ],
+    "model_name": "ppo_plr_inspired_500k_seed42",
+    "model_path": "saved models/plr_inspired/ppo_plr_inspired_500k_seed42.zip",
+    "metadata_path": "results/training/ppo_plr_inspired_500k_seed42.json",
+    "tensorboard_run": "ppo_plr_inspired_500k_seed42_1",
+    "tensorboard_log_dir": "logs/tensorboard/ppo_plr_inspired_500k_seed42_1",
+    "save_folder": "plr_inspired",
+    "training_time_seconds": 2408.7339282035828,
+    "selection_counts": {
+        "5": 3728,
+        "10": 3650,
+        "15": 3539,
+        "20": 3545
+    },
+    "selection_distribution_actual": {
+        "5": 0.2577790070529664,
+        "10": 0.2523855621629097,
+        "15": 0.24471027520398286,
+        "20": 0.24512515558014106
+    },
+    "successes": {
+        "5": 3718,
+        "10": 3633,
+        "15": 3525,
+        "20": 3518
+    },
+    "failures": {
+        "5": 10,
+        "10": 16,
+        "15": 14,
+        "20": 27
+    },
+    "final_priorities": {
+        "5": 0.1,
+        "10": 0.1,
+        "15": 0.1,
+        "20": 0.1
+    }
+}

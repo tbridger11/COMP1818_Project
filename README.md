@@ -142,6 +142,15 @@ tensorboard --logdir logs\tensorboard
 
 Open http://localhost:6006 to view training logs.
 
+## Acknowledgements
+This project builds upon several open-source reinforcement learning projects:
+
+MiniGrid
+Gymnasium
+Stable-Baselines3
+Optuna
+The project uses these frameworks under their respective licences. Custom environments, training pipelines, evaluation procedures and experiments were developed as part of COMP1818 coursework.
+
 ## AI assistance
 
 AI tools assisted with drafting and editing this README to ensure there would be no isssues with running this locally. 

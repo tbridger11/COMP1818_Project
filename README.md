@@ -1,3 +1,7 @@
+# Work of Toby Michael Bridger
+# email: tb9509i@gre.ac.uk
+# Coursework for COMP1818, Term 1, Submission 18th Nov 2026.
+
 # COMP1818 MiniGrid Generalisation Project
 
 This project compares PPO models trained on fixed and mixed grid sizes, including

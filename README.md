@@ -24,6 +24,24 @@ The repository already contains all trained models and evaluation results. Train
 TensorBoard logs and generated plots/tables are local outputs and are excluded
 from Git.
 
+# Running Scripts
+All scripts should be run from the repository root using Python modules:
+
+~~~powershell
+python -m src.training.ppo_baseline
+python -m src.training.ppo_mixed
+python -m src.training.ppo_mixed_optuna
+python -m src.training.ppo_plr
+
+python -m src.evaluation.evaluate_ppo
+python -m src.evaluation.evaluate_random
+python -m src.evaluation.evaluate_random_nav_only
+
+python -m src.plotting.plot_results
+~~~
+
+Scripts are designed to be executed as modules rather than by running individual .py files directly. This ensures package imports and relative paths resolve correctly across different IDEs and environments.
+
 ## Project layout
 
 - `src\environments`: custom MiniGrid environments.

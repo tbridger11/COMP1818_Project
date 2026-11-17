@@ -140,7 +140,7 @@ results for all six test sizes.
 tensorboard --logdir logs\tensorboard
 ~~~
 
-Open `http://localhost:6006` to view training logs.
+Open http://localhost:6006 to view training logs.
 
 ## AI assistance
 

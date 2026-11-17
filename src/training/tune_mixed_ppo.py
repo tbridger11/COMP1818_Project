@@ -11,6 +11,9 @@ from stable_baselines3 import PPO
 from src.environments.mixed_size import MixedSizeEnv
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+
 # CONFIG
 
 TRAIN_SIZES = [5, 10, 15, 20]
@@ -20,7 +23,7 @@ EVAL_EPISODES = 50
 N_TRIALS = 40
 BASE_SEED = 42
 VAL_SEEDS = list(range(5000, 5050))
-OUTPUT_PATH = Path("results/optuna_best_params.json")
+OUTPUT_PATH = PROJECT_ROOT / "results" / "optuna_best_params.json"
 
 # EVALUATION
 

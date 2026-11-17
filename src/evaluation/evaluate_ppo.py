@@ -7,6 +7,9 @@ from minigrid.wrappers import FlatObsWrapper
 from src.environments.custom_empty import VariableSizeEmptyEnv
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+
 def make_env(size):
     env = VariableSizeEmptyEnv(size=size)
     env = FlatObsWrapper(env)
@@ -63,8 +66,11 @@ def save_result(
     seed,
     episodes,
     results_dict,
+    project_root: Path = PROJECT_ROOT,
 ):
-    output_file = Path("results") / "evaluations" / "evaluation_results.csv"
+    output_file = (
+        project_root / "results" / "evaluations" / "evaluation_results.csv"
+    )
     output_file.parent.mkdir(parents=True, exist_ok=True)
     file_exists = output_file.exists()
 
@@ -193,7 +199,9 @@ if __name__ == "__main__":
                 train_size=train_size,
                 seed=seed,
             )
-            model_path = Path("saved models") / MODEL_FOLDER / model_name
+            model_path = (
+                PROJECT_ROOT / "saved models" / MODEL_FOLDER / model_name
+            )
 
             if not model_path.with_suffix(".zip").exists():
                 print(f"Skipping missing model: {model_name}")
@@ -217,6 +225,7 @@ if __name__ == "__main__":
                     seed=seed,
                     episodes=len(EVAL_SEEDS),
                     results_dict=results,
+                    project_root=PROJECT_ROOT,
                 )
 
                 print(

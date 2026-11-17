@@ -9,6 +9,9 @@ from stable_baselines3.common.monitor import Monitor
 from src.environments.mixed_size import MixedSizeEnv
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+
 TRAIN_SIZES = [5, 10, 15, 20]
 
 
@@ -25,13 +28,14 @@ def train_mixed_ppo(
     seed: int,
 ):
     env = make_env(seed)
-    Path("logs/tensorboard").mkdir(parents=True, exist_ok=True)
+    tensorboard_path = PROJECT_ROOT / "logs" / "tensorboard"
+    tensorboard_path.mkdir(parents=True, exist_ok=True)
     model = PPO(
         policy="MlpPolicy",
         env=env,
         seed=seed,
         verbose=1,
-        tensorboard_log="logs/tensorboard",
+        tensorboard_log=str(tensorboard_path),
     )
 
     print("TRAINING MIXED PPO")
@@ -48,7 +52,7 @@ def train_mixed_ppo(
     print(f"\nTraining Time: {minutes} min {seconds:.1f} sec")
 
     # SAVE MODEL
-    save_path = Path("saved models") / save_folder / model_name
+    save_path = PROJECT_ROOT / "saved models" / save_folder / model_name
     save_path.parent.mkdir(parents=True, exist_ok=True)
     model.save(str(save_path))
     model_path = save_path.with_suffix(".zip")
@@ -71,7 +75,9 @@ def train_mixed_ppo(
     }
 
     # METADATA
-    metadata_path = Path("results") / "training" / f"{model_name}.json"
+    metadata_path = (
+        PROJECT_ROOT / "results" / "training" / f"{model_name}.json"
+    )
     metadata = {
         "algorithm": "PPO_MIXED",
         "environment": "MixedSizeEnv",
@@ -82,10 +88,12 @@ def train_mixed_ppo(
         "policy": "MlpPolicy",
         "wrappers": ["FlatObsWrapper", "Monitor"],
         "model_name": model_name,
-        "model_path": model_path.as_posix(),
-        "metadata_path": metadata_path.as_posix(),
+        "model_path": model_path.relative_to(PROJECT_ROOT).as_posix(),
+        "metadata_path": metadata_path.relative_to(PROJECT_ROOT).as_posix(),
         "tensorboard_run": tensorboard_log_dir.name,
-        "tensorboard_log_dir": tensorboard_log_dir.as_posix(),
+        "tensorboard_log_dir": (
+            tensorboard_log_dir.relative_to(PROJECT_ROOT).as_posix()
+        ),
         "save_folder": save_folder,
         "training_time_seconds": elapsed_seconds,
         "selection_distribution_expected": {

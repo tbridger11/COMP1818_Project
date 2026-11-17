@@ -1,7 +1,10 @@
+from pathlib import Path
 import time
 
 from .evaluate_ppo import make_env, save_result
 
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 SEEDS = [42, 123, 999]
 TEST_SIZES = [5, 10, 15, 20, 30, 40]
@@ -87,6 +90,7 @@ if __name__ == "__main__":
                 seed=seed,
                 episodes=len(EVAL_SEEDS),
                 results_dict=results,
+                project_root=PROJECT_ROOT,
             )
 
             print(

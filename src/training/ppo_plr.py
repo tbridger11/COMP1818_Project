@@ -17,6 +17,9 @@ from src.environments.plr import (
 )
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+
 TRAIN_SIZES = [5, 10, 15, 20]
 # Best parameters obtained from src/training/tune_mixed_ppo.py.
 OPTUNA_PARAMS = {
@@ -41,13 +44,14 @@ def train_ppo_plr(
     seed: int,
 ):
     env = make_env(seed)
-    Path("logs/tensorboard").mkdir(parents=True, exist_ok=True)
+    tensorboard_path = PROJECT_ROOT / "logs" / "tensorboard"
+    tensorboard_path.mkdir(parents=True, exist_ok=True)
     model = PPO(
         policy="MlpPolicy",
         env=env,
         seed=seed,
         verbose=1,
-        tensorboard_log="logs/tensorboard",
+        tensorboard_log=str(tensorboard_path),
         learning_rate=OPTUNA_PARAMS["learning_rate"],
         n_steps=OPTUNA_PARAMS["n_steps"],
         batch_size=OPTUNA_PARAMS["batch_size"],
@@ -68,7 +72,7 @@ def train_ppo_plr(
     seconds = elapsed_seconds % 60
     print(f"\nTraining Time: {minutes} min {seconds:.1f} sec")
 
-    save_path = Path("saved models") / save_folder / model_name
+    save_path = PROJECT_ROOT / "saved models" / save_folder / model_name
     model_path = save_path.with_suffix(".zip")
     tensorboard_log_dir = Path(model.logger.dir)
 
@@ -127,7 +131,9 @@ def train_ppo_plr(
                 f"{MIN_PRIORITY} and {MAX_PRIORITY}."
             )
 
-    metadata_path = Path("results") / "training" / f"{model_name}.json"
+    metadata_path = (
+        PROJECT_ROOT / "results" / "training" / f"{model_name}.json"
+    )
     save_path.parent.mkdir(parents=True, exist_ok=True)
     metadata_path.parent.mkdir(parents=True, exist_ok=True)
     model.save(str(save_path))
@@ -156,10 +162,12 @@ def train_ppo_plr(
         "hyperparameters": OPTUNA_PARAMS,
         "wrappers": ["FlatObsWrapper", "Monitor"],
         "model_name": model_name,
-        "model_path": model_path.as_posix(),
-        "metadata_path": metadata_path.as_posix(),
+        "model_path": model_path.relative_to(PROJECT_ROOT).as_posix(),
+        "metadata_path": metadata_path.relative_to(PROJECT_ROOT).as_posix(),
         "tensorboard_run": tensorboard_log_dir.name,
-        "tensorboard_log_dir": tensorboard_log_dir.as_posix(),
+        "tensorboard_log_dir": (
+            tensorboard_log_dir.relative_to(PROJECT_ROOT).as_posix()
+        ),
         "save_folder": save_folder,
         "training_time_seconds": elapsed_seconds,
         "selection_counts": selection_counts,

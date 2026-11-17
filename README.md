@@ -113,15 +113,6 @@ previous 500k runs and includes the fixed-size PPO, Optuna-tuned fixed 15x15
 PPO, mixed Optuna PPO, and PLR-inspired PPO. Each model needs evaluation
 results for all six test sizes.
 
-## Utilities
-
-Run the manual viewer or custom-size environment check from the repository root:
-
-~~~powershell
-python -m src.tools.manual_viewer
-python -m src.tools.check_custom_sizes
-~~~
-
 ## TensorBoard
 
 ~~~powershell
@@ -132,5 +123,4 @@ Open `http://localhost:6006` to view training logs.
 
 ## AI assistance
 
-AI tools assisted with drafting and editing this README. The author is
-responsible for the final content.
+AI tools assisted with drafting and editing this README to ensure there would be no isssues with running this locally. 

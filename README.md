@@ -13,11 +13,14 @@ plotting pipeline.
 Use Python 3.13 and run commands from the repository root.
 
 ~~~powershell
+git clone https://github.com/tbridger11/COMP1818_Project.git
+cd COMP1818_Project
+python -m venv venv
 python -m pip install -r requirements.txt
 ~~~
 
-The repository includes saved non-test model checkpoints and evaluation
-results so the evaluation and plotting steps can be run without training first.
+The repository already contains all trained models and evaluation results. Training experiments do not need to be rerun to reproduce the reported figures and tables.
+
 TensorBoard logs and generated plots/tables are local outputs and are excluded
 from Git.
 

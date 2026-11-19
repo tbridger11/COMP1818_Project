@@ -8,6 +8,9 @@ This project compares PPO models trained on fixed and mixed grid sizes, includin
 a simplified PLR-inspired size sampler, using the existing evaluation and
 plotting pipeline.
 
+#  Disclaimer
+Some of the results tables submitted in the report were modified from the outputs of the plotting scripts improve formatting, clarity and readbility, as well as to improve overall quality of results by calculating the mean performance across test sizes for each model for the 250k generalisation table. However, the values themselves remain consistent with the output of the evaluation and plotting scripts. 
+
 ## Setup
 
 Use Python 3.13 and run commands from the repository root.
